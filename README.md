@@ -28,8 +28,25 @@ This repository hosts the source code for Pei's personal blog, built using Node.
 
 4. Open your browser and go to `http://localhost:3000`.
 
+## MongoDB Installation
+1. Install mongodb-community via homebrew
+   ```bash
+      brew install mongodb-community
+   ```
+2. Prepare a Data Directory
+   ```bash
+      mkdir -p ~/data/db
+      sudo chown -R $(whoami) ~/data/db
+   ```
+3. Start MongoDB
+   ```bash
+      mongod --dbpath ~/data/db --port 27017
+   ```
+4. Connect Using mongosh
+   ```bash
+      mongosh
+   ```
 ## Technologies Used
-
 - **Node.js** – Server-side JavaScript runtime.
 - **EJS** – Templating engine for dynamic HTML.
 - **CSS** – Styling for layout and design.
