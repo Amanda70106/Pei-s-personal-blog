@@ -23,7 +23,7 @@ This repository hosts the source code for Pei's personal blog, built using Node.
 
 3. Start the development server:
    ```bash
-   npm start
+   node app.js
    ```
 
 4. Open your browser and go to `http://localhost:3000`.
