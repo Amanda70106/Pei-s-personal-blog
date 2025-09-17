@@ -16,7 +16,7 @@ spec:
     spec:
       containers:
       - name: pei-blog
-        image: pei-blog:latest   # replace with your image
+        image: pei-blog:latest
         imagePullPolicy: IfNotPresent
         ports:
         - containerPort: 3000
