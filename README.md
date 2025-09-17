@@ -46,6 +46,23 @@ This repository hosts the source code for Pei's personal blog, built using Node.
    ```bash
       mongosh
    ```
+## Kubectl setting
+0. setup minikube
+   ```
+      minikube start --qemu-firmware-path=/opt/homebrew/Cellar/qemu/10.0.3/share/qemu/edk2-aarch64-code.fd --network=socket_vmnet
+   ```
+1. export docker image
+   ```
+      minikube image build -t pei-blog:latest .
+   ```
+2. apply deployment files
+   ```
+      k apply -f k8s/
+   ```
+3. connect to the service
+   ```
+      minikube service pei-blog-svc
+   ```
 ## Technologies Used
 - **Node.js** – Server-side JavaScript runtime.
 - **EJS** – Templating engine for dynamic HTML.

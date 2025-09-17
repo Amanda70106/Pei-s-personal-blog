@@ -1,0 +1,46 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pei-blog
+  labels:
+    app: pei-blog
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: pei-blog
+  template:
+    metadata:
+      labels:
+        app: pei-blog
+    spec:
+      containers:
+      - name: pei-blog
+        image: pei-blog:latest   # replace with your image
+        imagePullPolicy: IfNotPresent
+        ports:
+        - containerPort: 3000
+        env:
+        - name: PORT
+          value: "3000"
+        - name: MONGO_URI
+          value: "mongodb://mongodb-svc:27017/pei_blog"
+        livenessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 20
+          periodSeconds: 20
+        readinessProbe:
+          httpGet:
+            path: /
+            port: 3000
+          initialDelaySeconds: 5
+          periodSeconds: 10
+        resources:
+          requests:
+            cpu: "100m"
+            memory: "128Mi"
+          limits:
+            cpu: "500m"
+            memory: "512Mi"
